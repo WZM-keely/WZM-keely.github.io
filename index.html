@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/echarts.js"></script>
+    <script src="js/macarons.js"></script>
+</head>
+<body>
+    <div id="main" style="width:1000px;height: 1000px;background-color: blanchedalmond;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main' ),'macarons');
+  
+        // 指定图表的配置项和数据
+        option = {
+  title: {
+    text: '2015-2021年四季降水量'
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+    data: ['春季', '夏季', '秋季', '冬季'],
+    left:200,
+    top:30
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  toolbox:{
+            top:20,
+            show:true,
+            feature:{
+                DataView:{
+                    show:true,readOnly:false
+                },
+                magicType:{
+                    show:true, type:['line','bar']
+                },
+                restore:{
+                    show:true
+                },
+                saveAsImage:{
+                    show:true
+                },
+                dataZoom:{}
+            },
+            orient:'horizontal',
+            itemSiae:30,
+            itemGap:30,
+            iconStyle:{
+                color:'white',
+                borderColor:'gray'
+            },
+            emphasis:{
+                iconStyle:{
+                    textPosition:'top',
+                    textFill:'gray',
+                    textBackgroundColor:'pink',
+                    textPadding:5
+                }
+            },
+            right:20,
+        },
+  xAxis: {
+    name:'年份',
+    nameLocation : 'end',
+    type: 'category',
+    boundaryGap: false,
+    data: ['2015', '2016', '2017', '2018', '2019', '2020', '2021']
+  },
+  yAxis: {
+    name:'降水量',
+    nameLocation : 'end',
+    type: 'value',
+    boundaryGap: false,
+    data: ['100', '150', '200', '250', '300', '350', '400','450']
+  },
+  series: [
+    {
+      name: '春季',
+      type: 'line',
+      stack: 'Total',
+      data: [120, 132, 101, 134, 90, 230, 210]
+    },
+    {
+      name: '夏季',
+      type: 'line',
+      stack: 'Total',
+      data: [220, 182, 191, 234, 290, 330, 310]
+    },
+    {
+      name: '秋季',
+      type: 'line',
+      stack: 'Total',
+      data: [150, 232, 201, 154, 190, 330, 410]
+    },
+    {
+      name: '冬季',
+      type: 'line',
+      stack: 'Total',
+      data: [320, 332, 301, 334, 390, 330, 320]
+    },
+  ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+      </script>
+</body>
+<html>
